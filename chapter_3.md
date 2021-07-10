@@ -86,5 +86,4 @@ To summarize, in data mining, we consider classification or categorical variable
 
 Qualitative data, such as pictures or text, can be summarized into quantitative data. For example, an analysis of content can be expressed in terms of counts and measured in terms of impact or quantity of relationships. Content analysis may give rise to nominal data in which the categories can be named but do not have any implied order.
 
-See Bibliography for texts including discussions of data types,
-qualitative and quantitative data and information quality   
+See Bibliography for texts including discussions of data types, qualitative and quantitative data and information quality.
