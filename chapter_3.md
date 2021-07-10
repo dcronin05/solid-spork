@@ -5,6 +5,7 @@
     - [3.1.1 Data, Information, Knowledge and Wisdom](#311-data-information-knowledge-and-wisdom)
     - [3.1.2 Sources and Quality of Data](#312-sources-and-quality-of-data)
     - [3.1.3 Measurement Level and Types of Data](#313-measurement-level-and-types-of-data)
+    - [3.1.4 Measures of Magnitude and Dispersion](#314-measures-of-magnitude-and-dispersion)
 
 ## 3.1 Some Basics
 In most companies, marketing, sales and process control are major drivers for promoting data quality and producing comparable numbers and facts about the business. But, even production and Research and Development (R&D) departments need reliable data sources to use statistical methods or data mining to improve output and profitability. In most companies, the main impetus for checking and restructuring the data and processes is the introduction of Customer Relationship Management (CRM). CRM imbues the company's own data with new meaning. Gone are the days when customer data management only meant using the correct address in the mailing list. Today's data management must target individual customers and provide more communication and better quality information tailored to theses specific customers and their customer behavior. Data management forms the basis for using intelligent methods such as data mining to analyse the wealth of knowledge available in a company and build an optimal communication with customers and stakeholders.
@@ -32,7 +33,8 @@ An early indication of the transition implied by data, Information, Knowledge, a
 
 DIKW is illustrated in [Figure 3.2](#Figure3.2).
 
-<p style="text-align: center;">
+<p style="text-align: center; margin: auto">
+<img src="figs/A81863_03_f0002.jpg">
 FIGURE 3.2 The evolution of wisdom. Source: Reproduced by permission of Gene Bellinger <a href="http://systems-thinking.org/">http://systems-thinking.org/</a></p>
 
 &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;**D = Data** which is facts without context
@@ -49,10 +51,12 @@ It may seem unusual to write about knowledge management and data theory in an ap
 Data to be used for enterprise information and knowledge creation can come from either internal or external sources (see [Figure 3.3](#figure3.3)). The operational information system moves the large amount of data produced internally through the various processes. Since internal data is used primarily to handle the daily business, the operational systems lack any facility for keeping a comprehensive history. Inconsistencies may arise because of partially duplicated data storage in the very different sub-systems. Just as many quality defects affect the data used in the operational systems, so quality defects have an even greater impact on the analysis-oriented information systems. The quality of the data has a significant influence on the quality of the analysis based on it. At least the quality and reliability of internal data is in the control of the company. This is not the case for external data.
 
 |**Data source**|**Example**|**Characteristics**|
-|---|---|---|
+|---------------|-----------|-------------------|
 |**Internal**|Date a product was manufactured or invoice data|In control of company and may be more reliable|
 |**External**|Credit rating or data about the area the customer lives in|May not be a perfect match in time scale or location|
+
 <p style="text-align: center;">FIGURE 3.3 Typical internal and external data in information systems.</p>
+
 External data is generated outside the company's own processes; it is often required to act as additional information (e.g. credit rating) or as reference values (e.g. data form Government Statistical Offices or National Statistics Institutes). or analytically focused information systems in areas such as Database Marketing (DBM) and Customer Relationship Management (CRM), external data is added frequently; there may be specifically purchased additional information about the customer's address.
 
 Often, the quality of internal data is better than that from external resources, not least because you can control exactly how and when the internal data was generated. Another issue with external data is that it may not match the internal data exactly in time (being contemporaneous) or location. These discrepancies should be noted, but usually, even poorly matched external data can be useful to supply additional relevant information.
@@ -87,3 +91,30 @@ To summarize, in data mining, we consider classification or categorical variable
 Qualitative data, such as pictures or text, can be summarized into quantitative data. For example, an analysis of content can be expressed in terms of counts and measured in terms of impact or quantity of relationships. Content analysis may give rise to nominal data in which the categories can be named but do not have any implied order.
 
 See Bibliography for texts including discussions of data types, qualitative and quantitative data and information quality.
+
+### 3.1.4 Measures of Magnitude and Dispersion
+The measures of magnitude used in data mining are mainly the arithmetic mean, the median and the quantiles. Consider a simple situation where the expenditure in ∁ of 10 people is as follows: 34, 21, 0, 56, 24, 26, 12, 0, 14, 33 (see [Figure 3.4]). The arithmetic mean is the sum of the values divided by the number of values, so it is 220/10 = 22.0. The arithmetic mean is usually what is meant by the average. In the aforementioned example, each expenditure value is equally important, and so the average value is just the sum divided by 10. However, sometimes, the importance of data items may vary, and the weighted average value may be considered. For example, each of the expenditure values represents different segments of customers, and the segments have the following % weights: 10, 20, 5, 15, 20, 5, 5, 5, 5, 10, In this case, the weighted average is the sum of the weights times the expenditure divided by the total weight, which is 2670/100 = 26.7. The calculation is shown in the table.
+
+|**Customer**|**1**|**2**|**3**|**4**|**5**|**6**|**7**|**8**|**9**|**10**|**Total**|
+|------------|-----|-----|-----|-----|-----|-----|-----|-----|-----|------|---------|
+|**Expenditure**|34|21|0|56|24|26|12|0|14|33|220|
+|**Weight**|10|20|5|15|20|5|5|5|5|10|100|
+|**Product**|340|420|0|840|480|130|60|0|70|330|2670|
+
+<p style="text-align: center;">FIGURE 3.4 Table of sample data.</p>
+
+In our example the weighted average is higher than the average because the larger expenditure values generally occur in the more populated segments.
+
+The median is the central value when the data is placed in numerical order, so in our example, it is midway between the fifth and sixth values. Placing the 10 values in order gives the following: 0, 0, 12, 14, 21, 24, 26, 33, 34, 56. The median is (21 + 24)/2 = 22.5. The median has half of the values below it and half above it. There are four quartiles, and the first quartile has 25% of the data below it; the third quartile has 75% of the data below it. The first and third quartiles are sometimes referred to as the lower and upper quartiles, respectively.
+
+Quartiles are a particular type of quantile. We can define other quantiles and will make use of sextiles which divide the data into six parts. Quantiles are usually calculated from sets of data with many more than 10 members.
+
+The measures of magnitude can be used to assess the distribution of interval (metric) data; if the difference between the median and the average value is large, then this indicates that the data variables:
+
+* Are not Normally distributed
+* May be skewed
+* May have one or more outliers
+
+If there are outliers, then they must be considered in the analyses accordingly or be excluded. If Normal data is required, then a transformation may help.
+
+The dispersion measures show how variable the data values are. The dispersion measures commonly used in data mining are the range, inter-quartile range, variance and standard deviation. The range is the difference between the largest and smallest data values. In the aforementioned example, the range is 56 as this is the difference between 0 and 56. The inter-quartile range is the difference between the first and third quartiles. The variance is the square of the standard deviation, and both are important measures as they relate to calculations used in the Normal distribution. See standard statistical textbooks in the Bibliography for the relevant formulae.
