@@ -6,6 +6,7 @@
     - [3.1.2 Sources and Quality of Data](#312-sources-and-quality-of-data)
     - [3.1.3 Measurement Level and Types of Data](#313-measurement-level-and-types-of-data)
     - [3.1.4 Measures of Magnitude and Dispersion](#314-measures-of-magnitude-and-dispersion)
+    - [3.1.5 Data Distributions](#315-data-distributions)
 
 ## 3.1 Some Basics
 In most companies, marketing, sales and process control are major drivers for promoting data quality and producing comparable numbers and facts about the business. But, even production and Research and Development (R&D) departments need reliable data sources to use statistical methods or data mining to improve output and profitability. In most companies, the main impetus for checking and restructuring the data and processes is the introduction of Customer Relationship Management (CRM). CRM imbues the company's own data with new meaning. Gone are the days when customer data management only meant using the correct address in the mailing list. Today's data management must target individual customers and provide more communication and better quality information tailored to theses specific customers and their customer behavior. Data management forms the basis for using intelligent methods such as data mining to analyse the wealth of knowledge available in a company and build an optimal communication with customers and stakeholders.
@@ -34,8 +35,9 @@ An early indication of the transition implied by data, Information, Knowledge, a
 DIKW is illustrated in [Figure 3.2](#Figure3.2).
 
 <p style="text-align: center; margin: auto">
-<img src="figs/A81863_03_f0002.jpg">
-FIGURE 3.2 The evolution of wisdom. Source: Reproduced by permission of Gene Bellinger <a href="http://systems-thinking.org/">http://systems-thinking.org/</a></p>
+<img src="figs/A81863_03_f0002.jpg" style="filter: invert(90%);" /></p>
+
+<p style="text-align: center;">FIGURE 3.2 The evolution of wisdom. Source: Reproduced by permission of Gene Bellinger <a href="http://systems-thinking.org/">http://systems-thinking.org/</a></p>
 
 &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;**D = Data** which is facts without context
 
@@ -118,3 +120,14 @@ The measures of magnitude can be used to assess the distribution of interval (me
 If there are outliers, then they must be considered in the analyses accordingly or be excluded. If Normal data is required, then a transformation may help.
 
 The dispersion measures show how variable the data values are. The dispersion measures commonly used in data mining are the range, inter-quartile range, variance and standard deviation. The range is the difference between the largest and smallest data values. In the aforementioned example, the range is 56 as this is the difference between 0 and 56. The inter-quartile range is the difference between the first and third quartiles. The variance is the square of the standard deviation, and both are important measures as they relate to calculations used in the Normal distribution. See standard statistical textbooks in the Bibliography for the relevant formulae.
+
+### 3.1.5 Data Distributions
+Data mining is carried out on data collected for many people or cases. The way a data item varies is referred to as its distribution. The variation of categorical data can be shown by the frequency of occurrence of each level either in a table or in a bar chart which shows how the responses are distributed across the collection of cases (see [Figure 3.5]).
+
+<p style="margin: auto;"><img style="filter: invert(80%);" src="figs/A81863_03_f0005.jpg" title="Figure 3.5" /></p>
+
+<p style="text-align: center;">FIGURE 3.5 Data distribution.</p>
+
+Histograms are used to show the way scale data is distributed. Data, like salaries or customer lifetimes, are asymmetric with most values being below the average and a few values being much higher. Typically, the average salary will be much higher than the median salary because the few very rich people give the salary distribution a positive skew.
+
+A commonly occurring histogram shape is where most observations are close to the average and fewer cases are further away either larger or smaller than the average. This is the shape of a histogram for Normally distributed data, such as a person's weight, usually has a Normal distribution. The normal distribution also arises when average values are plotted instead of individual values. For example, if average customer lifetimes are calculated for random samples of customers, then a histogram of averages will probably have a Normal shape. The larger the number in the samples, the closer the average values will be to an approximately Normal distribution.
