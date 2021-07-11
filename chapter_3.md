@@ -20,7 +20,7 @@ In many companies, there is hardly any distinction between the terms knowledge, 
 |**Information**|Meaningful data, data in context|Knowledge needed for special purposes|
 |**Data**|Representation of facts|Fundamental|
   
-<p style="text-align:center;">FIGURE 3.1 Important terms in data evolution.</a>
+**<p style="text-align:center;">FIGURE 3.1 Important terms in data evolution.</a>**
 
 ### 3.1.1 Data, Information, Knowledge and Wisdom
 Here, we demonstrate a clear distinction between knowledge and data. The starting point is often the definition of information as knowledge needed for special purposes.
@@ -38,7 +38,7 @@ DIKW is illustrated in [Figure 3.2](#Figure3.2).
 <p style="text-align: center; margin: auto">
 <img src="figs/A81863_03_f0002.jpg" style="filter: invert(90%);" /></p>
 
-<p style="text-align: center;">FIGURE 3.2 The evolution of wisdom. Source: Reproduced by permission of Gene Bellinger <a href="http://systems-thinking.org/">http://systems-thinking.org/</a></p>
+**<p style="text-align: center;">FIGURE 3.2 The evolution of wisdom. Source: Reproduced by permission of Gene Bellinger <a href="http://systems-thinking.org/">http://systems-thinking.org/</a></p>**
 
 &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;**D = Data** which is facts without context
 
@@ -104,7 +104,7 @@ The measures of magnitude used in data mining are mainly the arithmetic mean, th
 |**Weight**|10|20|5|15|20|5|5|5|5|10|100|
 |**Product**|340|420|0|840|480|130|60|0|70|330|2670|
 
-<p style="text-align: center;">FIGURE 3.4 Table of sample data.</p>
+**<p style="text-align: center;">FIGURE 3.4 Table of sample data.</p>**
 
 In our example the weighted average is higher than the average because the larger expenditure values generally occur in the more populated segments.
 
@@ -127,7 +127,7 @@ Data mining is carried out on data collected for many people or cases. The way a
 
 <p style="margin: auto;"><img style="filter: invert(80%);" src="figs/A81863_03_f0005.jpg" title="Figure 3.5" /></p>
 
-<p style="text-align: center;">FIGURE 3.5 Data distribution.</p>
+**<p style="text-align: center;">FIGURE 3.5 Data distribution.</p>**
 
 Histograms are used to show the way scale data is distributed. Data, like salaries or customer lifetimes, are asymmetric with most values being below the average and a few values being much higher. Typically, the average salary will be much higher than the median salary because the few very rich people give the salary distribution a positive skew.
 
@@ -145,3 +145,15 @@ If the DB is large enough (100 000 or more), then in practical terms, we have fo
 * What should the split be between strata in the sample?
 * How can we get a large sample from a small population?
 * If the split is not the same in the training sample as in the population, will the model fit the real population?
+
+Deciding on the split depends on the relative and absolute numbers of target and non-target cases. As a rule of thumb, our experience suggests that if the proportion of target cases is less that 1% and the number of target cases is les than 15 000, then a 1:2 or 1:3 split should be used. This is because choosing only 15 000 from the much larger population of non-target cases risks missing some of the more unusual cases, whereas three times (45 000) lessens this risk (sse [Figure 3.6]).
+
+<p style="margin: auto;"><img style="filter: invert(90%);" src="figs/Figure 3.6.svg" /></p>
+
+**<p style="text-align: center;">FIGURE 3.6 Stratified sampling.</p>**
+
+If the number of target cases is small, then we may choose to augment it by sampling with replacement. This is a form of bootstrapping and raises the complication that the same cases can appear multiple times in both the training and testing samples. The theoretical implications of this bootstrapping are uncertain; however, in practice, building a model using the larger samples has been found to produce a stable model and is preferable to using the smaller target population as the sample in the traditional way.
+
+For further testing and validation, we can use other stratifications than 1:2, 1:3, or 50/50 or a simple random sample which represents the original proportions of the binary target variable in the population. It is important that the model gives good, reliable results with the actual data, so a simple random sample which reflects the actual data gives a good test of the model. Note that the original model is generated on the stratified sample to make the modelling process more stable. However, this is in an artificial world, and we need to check that the model still applies in the more real situation.
+
+Note that some data mining software offers the option of data partitioning in which the user states proportions, such as 60% and 40%, for the training and testing samples. In this case, we can present the full dataset to the model, or we can prepare our stratified sample and present that to the software.
