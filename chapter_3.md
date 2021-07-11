@@ -12,6 +12,11 @@
     - [3.3.1 Operational Systems Supporting Business Processes](#331-operational-systems-supporting-business-processes)
     - [3.3.2 Analysis-Based Information Systems](#332-analysis-based-information-systems)
     - [3.3.3 Importance of Information](#333-importance-of-information)
+  - [3.4 DATA WAREHOUSES](#34-data-warehouses)
+    - [3.4.1 Topic Orientation](#341-topic-orientation)
+    - [3.4.2.Logical Integration and Homogenization](#342logical-integration-and-homogenization)
+    - [3.4.3 Reference Period](#343-reference-period)
+    - [3.4.4 Low Volatility](#344-low-volatility)
 
 ## 3.1 SOME BASICS
 In most companies, marketing, sales and process control are major drivers for promoting data quality and producing comparable numbers and facts about the business. But, even production and Research and Development (R&D) departments need reliable data sources to use statistical methods or data mining to improve output and profitability. In most companies, the main impetus for checking and restructuring the data and processes is the introduction of Customer Relationship Management (CRM). CRM imbues the company's own data with new meaning. Gone are the days when customer data management only meant using the correct address in the mailing list. Today's data management must target individual customers and provide more communication and better quality information tailored to theses specific customers and their customer behavior. Data management forms the basis for using intelligent methods such as data mining to analyse the wealth of knowledge available in a company and build an optimal communication with customers and stakeholders.
@@ -197,3 +202,30 @@ Examples of questions relevant to decision makers are:
 * What is the turnover that can be achieved in the next year?
 
 The fundamental point is: Why is it so difficult to find answers to these critical management questions and why are these questions answered so infrequently? One explanation is that the answers are not straightforward. Considering the nature of the questions listed, the answers do not lie in a single set of figures or customer features, but in the right combination of a variety of different bits of information. Thus, for example, the affinity of a customer to an offer depends on characteristics such as age, gender, marital status, demographic typologies, previously purchased products, interest show in the product, payment practices, and many other properties.
+
+## 3.4 DATA WAREHOUSES
+A data warehouse is a collection of data which is gathered for the specific purpose of analysis. The data warehouse is very different to all other information systems in a company, as the relevant data is quality checked and then possibly processed within the data warehouse. Information systems typically do not allow an overview, whereas data warehouses are designed with this in mind.
+
+Unlike in other operational systems, the mapping of historical data, data history, and external data constitutes a large role in the data warehouse. The term data warehouse is now generally understood to mean something that serves as an enterprise-wide DB for a whole range of applications to support analytical tasks for specialists and executives. The data warehouse is operated separately from the operational information systems and filled from internal DBs as well as from external sources of data. The data warehouse is a logical centralized resource.
+
+The term data warehouse is generally understood to imply topic-oriented data rather than a concrete DB system product, with separate company-specific applications; it embraces the underlying concept of combining decision-related data. In other words, whereas other DBs are specific to particular software, the concept of data warehouse depends completely on the ideas that the company wants to explore. It cannot be built up mechanically by software alone.
+
+The contents of a data warehouse aan be characterized by four main features, which reveal the significant differences to other operational data:
+
+* Topic orientation
+* Logical integration and homogenization
+* Presence of a reference period
+* Low volatility
+
+These topics are dealt with in the following sections.
+
+### 3.4.1 Topic Orientation
+In contrast to operational systems, which are oriented towards specific organization units, remits, and work processes, the contents of the data ware house are oriented towards matters which affect the decisions made by the company in specific topic areas. Typical topics include the customer, the products, the payments, and the advertizing or sales campaigns. Besides affecting the content of the data warehouse, this fact also has great influence on the logical data model applied. For example, in operational systems, the customer as such does not appear; rather, it is the product and invoice numbers which mainly feature and are followed up in subsequent processes. The data may often be stored in totally different places, including accounting systems, logistics and delivery and stock control. By contrast, the data warehouse will be customer oriented, and if you follow the customer number, it is easy to find all the information associated with this customer, regardless of which system the data is stored in.
+
+### 3.4.2.Logical Integration and Homogenization
+A data warehouse traditionally consists of common data structures based on the ideas of relational DBs, but nowadays, the discussion of unstructured no-SQL DBs is considered alongside the discussion of 'big data'. The really big amount of data coming from log files and social networks necessitates a different architecture and way of storing data. The aim of both data warehouses and big data architecture is an enterprise-wide integration of all relevant data into a consistent set of data in a continuous system model. This goal also implies the cross-functional use of the data.
+
+### 3.4.3 Reference Period
+Information for decision support should be provided quickly and in a timely fashion. However, it is relatively unimportant for data processing to be taking place at a precise time in the operational systems. It is much more important to be able to incorporate the different periods of time without problems in the ensuing analysis. In the operational system, the time factor has only a descriptive role, but in the data warehouse, it is an important structural component. The special feature of the data warehouse is the fact that historical data is retained, even, for example, data that was archived in the operational system for a long time or was destroyed in a company reorganization.
+
+### 3.4.4 Low Volatility
