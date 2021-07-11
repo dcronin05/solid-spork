@@ -8,6 +8,10 @@
     - [3.1.4 Measures of Magnitude and Dispersion](#314-measures-of-magnitude-and-dispersion)
     - [3.1.5 Data Distributions](#315-data-distributions)
   - [3.2 DATA PARTITION: RANDOM SAMPLES FOR TRAINING, TESTING AND VALIDATION](#32-data-partition-random-samples-for-training-testing-and-validation)
+  - [3.3 TYPES OF BUSINESS INFORMATION SYSTEMS](#33-types-of-business-information-systems)
+    - [3.3.1 Operational Systems Supporting Business Processes](#331-operational-systems-supporting-business-processes)
+    - [3.3.2 Analysis-Based Information Systems](#332-analysis-based-information-systems)
+    - [3.3.3 Importance of Information](#333-importance-of-information)
 
 ## 3.1 SOME BASICS
 In most companies, marketing, sales and process control are major drivers for promoting data quality and producing comparable numbers and facts about the business. But, even production and Research and Development (R&D) departments need reliable data sources to use statistical methods or data mining to improve output and profitability. In most companies, the main impetus for checking and restructuring the data and processes is the introduction of Customer Relationship Management (CRM). CRM imbues the company's own data with new meaning. Gone are the days when customer data management only meant using the correct address in the mailing list. Today's data management must target individual customers and provide more communication and better quality information tailored to theses specific customers and their customer behavior. Data management forms the basis for using intelligent methods such as data mining to analyse the wealth of knowledge available in a company and build an optimal communication with customers and stakeholders.
@@ -157,3 +161,39 @@ If the number of target cases is small, then we may choose to augment it by samp
 For further testing and validation, we can use other stratifications than 1:2, 1:3, or 50/50 or a simple random sample which represents the original proportions of the binary target variable in the population. It is important that the model gives good, reliable results with the actual data, so a simple random sample which reflects the actual data gives a good test of the model. Note that the original model is generated on the stratified sample to make the modelling process more stable. However, this is in an artificial world, and we need to check that the model still applies in the more real situation.
 
 Note that some data mining software offers the option of data partitioning in which the user states proportions, such as 60% and 40%, for the training and testing samples. In this case, we can present the full dataset to the model, or we can prepare our stratified sample and present that to the software.
+
+## 3.3 TYPES OF BUSINESS INFORMATION SYSTEMS
+Only computerized information systems are considered here; other internal information systems, such as meeting notes, notices, hearsay, post-its and similar items are not considered further. In practice, two fundamentally different types of information systems have become established in the enterprise:
+
+* Operational systems supporting business processes
+* Analysis-based information systems
+
+### 3.3.1 Operational Systems Supporting Business Processes
+Information systems to support operations and production are probably to be found in virtually all businesses to a varying extent. Automatic standardizing operations achieve efficiencies that can be causally attributed to the economic efficiency of the electronic information processing. The use of operational systems is aimed initially at the rationalization of standardized administrative processes, which are characterized by the accumulation of large amounts of data, resulting in the shortening of throughput times of processes. Operational information systems consist of the sum of all the individual systems which are necessary to establish the daily business. Part of the operational information systems in the traditional Enterprise Resource Planning (ERP) systems, including financial accounting, are the data acquisition systems. All these systems have in common the fact that they have been optimized to specific aspects of operational work, both in data processing and in the amount of data being stored. The DB may be implemented, but its maintenance is not aligned with all the uses of the data (leading to redundancy or duplication of effort). For example, amendments to addresses may be made for the benefit of one process but not be transferred to apply elsewhere. That and the fact that such systems are often composed of very heterogeneous DBs implies a risk that inconsistencies may arise. Another feature of operational systems is the method of data processing the large numbers of individual records. These methods are different to those employed in the second type of information system, the analysis-based information system considered in the following.
+
+### 3.3.2 Analysis-Based Information Systems
+Analysis-based information systems refer to all systems that are necessary to store the data and make it ready for analysis. They also include the (user) tools, with whose help one can gain benefit from the information and knowledge. In terms of schematic architecture, the connected front-end tools that help the user to access the datasets can be distinguished from the data storage components. The front-end tools are thus not part of the data warehouse in the strict sense. Ideally, there should be independence between the storage and the various tools (including data mining tools) that have access to it and the interfaces that can exchange data.
+
+Despite this conceptual separation, it should not be overlooked that in practice there is often a close integration of technological tools with the data storage components. Specifically, analysis-based information systems consist of data warehouses and data marts as well as analytical tools (i.e. Online Analytical Processing (OLAP) and data mining tools). Data warehouses and data marts are discussed in detail in the following sections. Further details of analytical tools and a checklist for choosing and using them are given in later chapters and as they arise in the context of the data mining recipes in [Part III].
+
+### 3.3.3 Importance of Information
+Information plays a crucial role in a company's competitiveness. Companies that use innovative technologies are able quickly and flexibly to adapt to rapidly changing market factors and customer requirements, enabling them to achieve a strong competitive advantage. There is a flood of data in the operational DB of the daily business. However, this data capital is often poorly utilized or is left lying idle.
+
+Data capital:
+
+* Is the value contained in the data
+* Can only be assessed when data is turned into information
+* Is often poorly utilized or is left lying idle
+
+Essential information is often not available to decision makers at management level at the critical point of need or at least is not in a form necessary for creative analysis and decision making. It can be shown that for the DB of these systems, the well-known 80/20 rule applies, in other words that 20% of the data gives 80% of the information needed for decision makers, and as a complement, 80% of the data collected is useful for only a small (e.g. 20%) amount of decision making. The company is typically storing a lot of data (e.g. in tax returns) that will not fully be used for decision making. As a sound basis for corporate decisions, it is vital that meaningful data can be selected and make available quickly. For example, it should be no problem to be able to find the number of new customers or prospects or their mean age whenever it is needed. Having data available to answer the questions relevant to decision makers represents a major strategic advantage.
+
+Examples of questions relevant to decision makers are:
+
+* Which customers should be made a particular offer?
+* Which customers are at risk of leaving us (i.e. churning)?
+* How high is the cross-selling potential for a new product?
+* What is the lifetime profit that can be achieved wit which customers?
+* How can top prospects with high lifetime values be attracted?
+* What is the turnover that can be achieved in the next year?
+
+The fundamental point is: Why is it so difficult to find answers to these critical management questions and why are these questions answered so infrequently? One explanation is that the answers are not straightforward. Considering the nature of the questions listed, the answers do not lie in a single set of figures or customer features, but in the right combination of a variety of different bits of information. Thus, for example, the affinity of a customer to an offer depends on characteristics such as age, gender, marital status, demographic typologies, previously purchased products, interest show in the product, payment practices, and many other properties.
