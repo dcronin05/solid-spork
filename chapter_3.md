@@ -17,6 +17,7 @@
     - [3.4.2.Logical Integration and Homogenization](#342logical-integration-and-homogenization)
     - [3.4.3 Reference Period](#343-reference-period)
     - [3.4.4 Low Volatility](#344-low-volatility)
+    - [3.4.5 Using the Data Warehouse](#345-using-the-data-warehouse)
 
 ## 3.1 SOME BASICS
 In most companies, marketing, sales and process control are major drivers for promoting data quality and producing comparable numbers and facts about the business. But, even production and Research and Development (R&D) departments need reliable data sources to use statistical methods or data mining to improve output and profitability. In most companies, the main impetus for checking and restructuring the data and processes is the introduction of Customer Relationship Management (CRM). CRM imbues the company's own data with new meaning. Gone are the days when customer data management only meant using the correct address in the mailing list. Today's data management must target individual customers and provide more communication and better quality information tailored to theses specific customers and their customer behavior. Data management forms the basis for using intelligent methods such as data mining to analyse the wealth of knowledge available in a company and build an optimal communication with customers and stakeholders.
@@ -105,7 +106,7 @@ Qualitative data, such as pictures or text, can be summarized into quantitative 
 See Bibliography for texts including discussions of data types, qualitative and quantitative data and information quality.
 
 ### 3.1.4 Measures of Magnitude and Dispersion
-The measures of magnitude used in data mining are mainly the arithmetic mean, the median and the quantiles. Consider a simple situation where the expenditure in ∁ of 10 people is as follows: 34, 21, 0, 56, 24, 26, 12, 0, 14, 33 (see [Figure 3.4]). The arithmetic mean is the sum of the values divided by the number of values, so it is 220/10 = 22.0. The arithmetic mean is usually what is meant by the average. In the aforementioned example, each expenditure value is equally important, and so the average value is just the sum divided by 10. However, sometimes, the importance of data items may vary, and the weighted average value may be considered. For example, each of the expenditure values represents different segments of customers, and the segments have the following % weights: 10, 20, 5, 15, 20, 5, 5, 5, 5, 10, In this case, the weighted average is the sum of the weights times the expenditure divided by the total weight, which is 2670/100 = 26.7. The calculation is shown in the table.
+The measures of magnitude used in data mining are mainly the arithmetic mean, the median and the quantiles. Consider a simple situation where the expenditure in C of 10 people is as follows: 34, 21, 0, 56, 24, 26, 12, 0, 14, 33 (see [Figure 3.4]). The arithmetic mean is the sum of the values divided by the number of values, so it is 220/10 = 22.0. The arithmetic mean is usually what is meant by the average. In the aforementioned example, each expenditure value is equally important, and so the average value is just the sum divided by 10. However, sometimes, the importance of data items may vary, and the weighted average value may be considered. For example, each of the expenditure values represents different segments of customers, and the segments have the following % weights: 10, 20, 5, 15, 20, 5, 5, 5, 5, 10, In this case, the weighted average is the sum of the weights times the expenditure divided by the total weight, which is 2670/100 = 26.7. The calculation is shown in the table.
 
 |**Customer**|**1**|**2**|**3**|**4**|**5**|**6**|**7**|**8**|**9**|**10**|**Total**|
 |------------|-----|-----|-----|-----|-----|-----|-----|-----|-----|------|---------|
@@ -134,7 +135,7 @@ The dispersion measures show how variable the data values are. The dispersion me
 ### 3.1.5 Data Distributions
 Data mining is carried out on data collected for many people or cases. The way a data item varies is referred to as its distribution. The variation of categorical data can be shown by the frequency of occurrence of each level either in a table or in a bar chart which shows how the responses are distributed across the collection of cases (see [Figure 3.5]).
 
-<p style="margin: auto;"><img style="filter: invert(80%);" src="figs/A81863_03_f0005.jpg" title="Figure 3.5" /></p>
+<p style="text-align: center; margin: auto;"><img style="filter: invert(80%);" src="figs/A81863_03_f0005.jpg" title="Figure 3.5" /></p>
 
 **<p style="text-align: center;">FIGURE 3.5 Data distribution.</p>**
 
@@ -229,3 +230,21 @@ A data warehouse traditionally consists of common data structures based on the i
 Information for decision support should be provided quickly and in a timely fashion. However, it is relatively unimportant for data processing to be taking place at a precise time in the operational systems. It is much more important to be able to incorporate the different periods of time without problems in the ensuing analysis. In the operational system, the time factor has only a descriptive role, but in the data warehouse, it is an important structural component. The special feature of the data warehouse is the fact that historical data is retained, even, for example, data that was archived in the operational system for a long time or was destroyed in a company reorganization.
 
 ### 3.4.4 Low Volatility
+Data that was once stored in a data warehouse should not change although there may to the data warehouse as a whole. For example, where there are errors in the data due to a faulty charging process, the action is to insert new records to describe the new charging process rather than overwrite the wold records. This is in clear contrast to operational systems. As an example, a product might be purchased, but later, the purchase is cancelled. In the operational system, the records with the order would be overwritten by the reversal record or be deleted. In the data warehouse, there would be two records: one with the order and one with the cancellation. Both records would be included in the data warehouse to understand the action of the customer and also to allow different analyses to be carried out. In the operational system, there would be no extra external data or information available to explain the entry or deleted records, since the failed purchase is no longer relevant.
+
+### 3.4.5 Using the Data Warehouse
+In summary, we cans ay that the data warehouse is a central storage DB, with the aforementioned characteristics, centralizing all relevant data in the enterprise. Generally, therefore, the data warehouse concept is characterized by the specific architecture or implementation of form that generated it. This idea of form integrates operational data from which the data warehouse is filled regularly, but thereafter, acts independently from the operational system. The main roles of the data warehouse are to support decision making and for analytical purposes.
+
+Unlike operational systems, a data warehouse is able efficiently to have 'read access' to large amounts of data designed in complex structures. Particular attention is paid here to the changing information needs. Through this, it is necessary to design the structures so that complex queries that involve large amounts of data, as well as extensive aggregation and joining operations, can be managed. This typical form of a data warehouse leads to utilization which differs significantly from that of the operational systems. In the data warehouse, utilization is subject to significant fluctuations with pronounced peaks, which are directly related to the queries being made. In contrast, the utilization of an operational system is close to constant and stays at a uniformly high level (see [Figure 3.7]).
+
+<p style="text-align: center; margin: auto;"><img style="filter: invert(90%);" src="figs/Figure 3.7 Example data structure..svg" /></p>
+
+**<p style="text-align: center;">FIGURE 3.7 Example data structure.</p>**
+
+The construction of a data warehouse helps some companies solve the massive resource conflict between the execution of daily business and the implementation of complex analysis needed to support decision making. To implement a data warehouse, we need to consider three different forms of organization:
+
+* Central DB warehouse
+* Distributed DB warehouse
+* Virtual DB warehouse
+
+The most common form of implementation is the central DB warehouse; this is where the management of all datasets for the various front-end applications is on a single system. Distributed data warehouses are when different departments might run their own data warehouses optimized for their needs.
