@@ -18,6 +18,21 @@
     - [3.4.3 Reference Period](#343-reference-period)
     - [3.4.4 Low Volatility](#344-low-volatility)
     - [3.4.5 Using the Data Warehouse](#345-using-the-data-warehouse)
+  - [3.5 THREE COMPONENTS OF A DATA WAREHOUSE: DBMS, DB AND DBCS](#35-three-components-of-a-data-warehouse-dbms-db-and-dbcs)
+    - [3.5.1 Database Management System (DBMS)](#351-database-management-system-dbms)
+    - [3.5.2 Database (DB)](#352-database-db)
+    - [3.5.3.Database Communication Systems (DBCS)](#353database-communication-systems-dbcs)
+  - [3.6 DATA MARTS](#36-data-marts)
+    - [3.6.1 Regularly Filled Data Marts](#361-regularly-filled-data-marts)
+    - [3.6.2 Comparison between Data Marts and Data Warehouses](#362-comparison-between-data-marts-and-data-warehouses)
+  - [3.7 A TYPICAL EXAMPLE FROM THE ONLINE MARKETING AREA](#37-a-typical-example-from-the-online-marketing-area)
+  - [3.8 UNIQUE DATA MARTS](#38-unique-data-marts)
+    - [3.8.1 Permanent Data Marts](#381-permanent-data-marts)
+    - [3.8.2 Data Marts Resulting from Complex Analysis](#382-data-marts-resulting-from-complex-analysis)
+  - [3.9 DATA MART: DO'S AND DON'TS](#39-data-mart-dos-and-donts)
+  - [3.9.1 Do's and Don'ts for Processes](#391-dos-and-donts-for-processes)
+  - [3.9.2 Do's and Don'ts for Handling](#392-dos-and-donts-for-handling)
+  - [3.9.3 Do's and Don'ts for Coding/Programming](#393-dos-and-donts-for-codingprogramming)
 
 ## 3.1 SOME BASICS
 In most companies, marketing, sales and process control are major drivers for promoting data quality and producing comparable numbers and facts about the business. But, even production and Research and Development (R&D) departments need reliable data sources to use statistical methods or data mining to improve output and profitability. In most companies, the main impetus for checking and restructuring the data and processes is the introduction of Customer Relationship Management (CRM). CRM imbues the company's own data with new meaning. Gone are the days when customer data management only meant using the correct address in the mailing list. Today's data management must target individual customers and provide more communication and better quality information tailored to theses specific customers and their customer behavior. Data management forms the basis for using intelligent methods such as data mining to analyse the wealth of knowledge available in a company and build an optimal communication with customers and stakeholders.
@@ -237,9 +252,13 @@ In summary, we cans ay that the data warehouse is a central storage DB, with the
 
 Unlike operational systems, a data warehouse is able efficiently to have 'read access' to large amounts of data designed in complex structures. Particular attention is paid here to the changing information needs. Through this, it is necessary to design the structures so that complex queries that involve large amounts of data, as well as extensive aggregation and joining operations, can be managed. This typical form of a data warehouse leads to utilization which differs significantly from that of the operational systems. In the data warehouse, utilization is subject to significant fluctuations with pronounced peaks, which are directly related to the queries being made. In contrast, the utilization of an operational system is close to constant and stays at a uniformly high level (see [Figure 3.7]).
 
-<p style="text-align: center; margin: auto;"><img style="filter: invert(90%);" src="figs/Figure 3.7 Example data structure..svg" /></p>
+<p style="text-align: center; margin: auto; display: block;"><img style="filter: invert(90%);" src="figs/Figure 3.7 Example data structure..svg" /></p>
 
 **<p style="text-align: center;">FIGURE 3.7 Example data structure.</p>**
+
+<p style="text-align: center; margin: auto;"><img style="filter: invert(80%);" src="figs/A81863_03_f0009.jpg" title="Figure 3.5" /></p>
+
+**<p style="text-align: center;">FIGURE 3.5 Data distribution.</p>**
 
 The construction of a data warehouse helps some companies solve the massive resource conflict between the execution of daily business and the implementation of complex analysis needed to support decision making. To implement a data warehouse, we need to consider three different forms of organization:
 
@@ -248,3 +267,110 @@ The construction of a data warehouse helps some companies solve the massive reso
 * Virtual DB warehouse
 
 The most common form of implementation is the central DB warehouse; this is where the management of all datasets for the various front-end applications is on a single system. Distributed data warehouses are when different departments might run their own data warehouses optimized for their needs.
+
+In some parts of the literature, these are also called data marts. There is confusion in the literature as some people call them data warehouses; there is some inconsistency of the terms used. When we speak about data warehouses, we mean storage of detailed data, and when we speak about the data mart, we mean more or less prepared data for special usages (e.g. data aggregated to control marketing campaigns or to prepare data for data mining).
+
+A virtual data warehouse is sometimes created for reporting and refers to creating views of the original data in the legacy system or the original data sources. Everything done in the central data warehouse by the Extraction, Transforming and Loading (ETL) processes is implemented in the view but not carried out on the real data.
+
+## 3.5 THREE COMPONENTS OF A DATA WAREHOUSE: DBMS, DB AND DBCS
+A data warehouse can be seen as a DB system sharing the three components of the Database Management System (DBMS), the DB and the Database Communication System (DBCS). For example, the DBMS contains meta-data on loading, error detection, constraints and validation, and the DB is the storage of the data; DBCS refers to the possibility of analyzing the data using, for example, SQL or other suitable languages.
+
+### 3.5.1 Database Management System (DBMS)
+The DBMS in the data warehouse is mainly for managing the analysis-oriented DB. It provides the functionality for data definition and manipulation; thus, the DBMS in a data warehouse has different requirements to that of an operational system.
+
+### 3.5.2 Database (DB)
+The issues of integrity and consistency int he DB datasets under analysis are evaluated differently in the operational system, as are data security and availability. This is because the data in a data warehouse is made up of copies of operational datasets with the addition of any changes made in the operational system and any additional information extracted from the data. For example, this operational data may store salutation only (Mr, Mrs. Ms, Miss, Master); in the data warehouse in addition to the salutation, marital status could also be extracted as well as gender out of the salutation. If the salutation changes from Mrs to Ms, then the operational data just records the new value, but the warehouse records the old and the new as well as the time it changed, as well as any consequent information like marital status.
+
+Hence, the effort involved in ensuring integrity, consistency, security and availability in greater int he data warehouse than in the operational system. For this reason, only the administrator or defined processes can change the data in a data warehouse, whereas any of the human operators can add to the data in an operational system or change it (e.g. by adding new addresses).
+
+Data is more business oriented in a data warehouse. This can lead to critical and strategic information showing up earlier. There is a greater demand to think about the issue of security and the consequent roles of data because the data is now immediately useful, say, to competitors.
+
+Storage and access must be optimized to give the user a short response time for complex queries and analysis, but this must not lead to a loss of flexibility in the analysis.
+
+### 3.5.3.Database Communication Systems (DBCS)
+DBCS play a prominent role in analysis-oriented information systems, because without them, the use of the data store din the data warehouse is very difficult. At the same time, front-end tools and their internal data management systems put very different different demands on the interfaces.
+
+An indispensable part of the analysis-oriented information system and particularly of the data warehouse is detailed meta-databases. Unlike in the operational system, where their role is less important, meta-databases are particularly suitable for the users of data warehouses because the meta-data is essential to perform the analysis on the data effectively.
+
+Evidently one of the critical success factors for an analytically oriented information system is a well-maintained meta-database complete with the relevant business terms.
+
+## 3.6 DATA MARTS
+The term data mart is widely used and is well differentiated from the term data warehouse. However, both data warehouses and data marts are building blocks that serve to store data in the context of analysis-oriented information systems.
+
+A data mart is defined as a specific collection of data, in which only the needs of a specific view and use are mapped. For example, a data mart could be constructed for customer-based predict predictive analyses such as the prediction of those customers with the highest probability to buy next.
+
+Data is often arranged in very different ways. A data mart on the one hand is seen as a subset of the data warehouse, in which a portion of the dataset is duplicated, and on the other hand as an entity in its own right. If there is duplication of data in the data mart, this is justified by the size and structure of the data warehouse. The data warehouse contains very large datasets that are based on 'relational' DB systems and are thus organized in relation to usage; they are not necessarily structures which are fully adequate for addressing specific problems. Especially when interactive access to the datasets is desirable, the representation of data in the data warehouse as well as the response times may not be very good. Constructing a data mart solves this problem; function- or area-specific extracts from the data warehouse DB are collected and stored in duplicate in a data mart.
+
+Data mart storage can be realized with the same technology, and a data model can be used that corresponds to a proper subset of the data warehouse, so tha the data mart can be easily maintained. Alternatively, it also seems appropriate for the data mart with its manageable data volume (as opposed to the relational-based data warehouse) to use a multi-dimensional DB system in order to exploit the potentially better modelling and querying capabilities of this technology. In particular, the necessary transformation of data into the new model can be carried out. However, because the care of such data marts is expensive, it is sensible to consider the advantages and disadvantages of heterogeneous data models. Note that the term 'models' here is used in the sense of computer science and refers to the data structure including aspects such as the following: which data item is the primary key and which is the secondary key?
+
+The users receive the data mart tailored to their information needs and including a sub-section of the enterprise-wide DB. With careful delineation of these data mart excerpts, requests for essential parts of the data mart can be compared favorably in terms of speed of access as compared to the speed of direct access to the data warehouse. Basically, data marts can be close to the form of data storage (relational and multi-dimensional) in the data warehouse, but they differ in that unlike the data warehouse which is created only once, the data mart is regularly updated as a whole or in part.
+
+### 3.6.1 Regularly Filled Data Marts
+Data marts, which need to be updated regularly according to their initial load, are often needed for reporting and OLAP or when you are data mining aggregated data that is continuously available. Typical examples of such data mart tables and files are compressed at different levels (e.g. sales figures for the current year). Depending on the definition of this information, it should be available daily, weekly or monthly. The shorter the update period, the more important it is that the process of updating is fully automated or that the refill is carried out according to fixed rules and within defined procedures. With a daily loading cycle, updates take place during the night, after data from operational systems have accumulated in the data warehouse, giving the most current information available.
+
+### 3.6.2 Comparison between Data Marts and Data Warehouses
+Many companies offer help with data marts to provide users with information pre-aggregated. The data warehouse DB is stored there with the current and historical data from all divisions in the different stages of compression in the core of the analysis-oriented information system. Here, there is a recognizable conflict from the user perspective: in a data mart, data is aggregated for the analysis of major interest; however, there is little flexibility to analyze detailed individual values or to respond to new data requirements to link them.
+
+Data warehouses do not give rise to this dilemma; data marts may be deployed to contain aggregated and possibly transformed data, while in the data warehouse, the data is stored on the finest available granularity. For the data warehouse, the relational storage of data as a quasi-state has emerged over the years, while data marts depending on the application will create both relational and multi-dimensional data.
+
+## 3.7 A TYPICAL EXAMPLE FROM THE ONLINE MARKETING AREA
+In online marketing, you are very often faced with data marts that are created regularly (once a day) out of a log file data stream or out of a data warehouse counting log file and clickstream data. So the statisticians or other persons with analytical skills can use this data mart as a starting point for their analysis, without investing a lot of time in data preparation. Because for most websites the number of users or unique clients is too big, some of the data marts just include a representative sample of the users or unique clients. Such a data mart can have the structure show in [Figure 3.8] and [Figure 3.9].
+
+<p style="text-align: center; margin: auto;"><img style="filter: invert(80%);" src="figs/A81863_03_f0008.webp" title="Figure 3.5" /></p>
+
+**<p style="text-align: center;">FIGURE 3.8 Example data structure.</p>**
+
+<p style="text-align: center; margin: auto;"><img style="filter: invert(80%);" src="figs/A81863_03_f0009.jpg" title="Figure 3.5" /></p>
+
+**<p style="text-align: center;">FIGURE 3.9 Translation list of variable names.</p>**
+
+It is very likely that the data mart will have around 1000 variables if you are recording the clicks for all the different areas of content. There can be a mass of data; the aforementioned example just shows the sum of clicks on a special content during the last 10 slots (slot = day with activity on the web page).
+
+If you know from your domain knowledge that it might be important to find out the averages or the development of the clicks during the last few slots, or the trend, then you have to extend the definition of the information. [Figure 3.10] is an example of how it can look just for one theme like 1021 (Fashion/Clothing) from the example before.
+
+<p style="text-align: center; margin: auto;"><img style="filter: invert(80%);" src="figs/A81863_03_f0010.jpg" title="Figure 3.5" /></p>
+
+**<p style="text-align: center;">FIGURE 3.10 Example of click information.</p>**
+
+This is just an example, but it might illustrate that also for other industry areas, it might be interesting to invest time and maybe money to think about data marts that will be created regularly by the system. If the analytical data miner personnel have to reconstruct the data every time they need the data, it might cost much more and there is no common ground for analyses done by more than one person.
+
+## 3.8 UNIQUE DATA MARTS
+The large variety of data marts includes two particular types: permanently available data marts and those that have been created through a unique, sometimes complex, analysis.
+
+### 3.8.1 Permanent Data Marts
+This area includes all the data marts that are condensed from history; they are not changing when more data is available. These data marts do not arise from regular data marts; in fact, they only need to be constructed once initially and otherwise (except in the case of an error in the data) cannot be changed. As part of the workflow to be defined, they only play a role as an information provider for various analyses. Typical examples of this kind of data mart are data marts that only include historical information, without any interaction with current data, for example, sales figures 3 years ago or production data half a year ago.
+
+### 3.8.2 Data Marts Resulting from Complex Analysis
+
+Particularly in the area of *ad hoc* queries and data mining analysis, it is often necessary to consolidate data from the data warehouse in terms of different views and contexts. To implement this, there are basically two possibilities: empower the user or allow the analyst to contact the data warehouse administration with a request to create a data mart according to specified rules or provide the empowered user with an appropriate software solution so that they can create the appropriate data marts by themselves. These kinds of data marts are only done to solve one problem or to carry out a special kind of analysis. We recommend that the user takes a break after finishing the actual analysis and a critical review to see whether the resulting data mart contains variables or ideas that will be fruitful if the data mart becomes one of the regularly implemented data marts.
+
+## 3.9 DATA MART: DO'S AND DON'TS
+
+There are important issues when creating a data mart. These concern the creation process, the handling of the data mart and the coding/programming aspects. It is worthwhile considering the do's and don'ts for each of these areas when creating a data mart.
+
+## 3.9.1 Do's and Don'ts for Processes
+
+1. Don't forget the relevant background and domain knowledge.
+2. Do use check sums; they should match the numbers you know from your reporting.
+3. Do cross-check between different tables and source systems; check that the results fit together and that they represent the relations and averages you have in mind.
+4. Don't start the analysis and/or estimation too early.
+5. Do define meaningful meta-data.
+6. Do prepare and/or transform the data to a shape that suits the methods you plan to use.
+7. Do explore the data using easy descriptive analysis and graphical representations.
+8. Do carry out peer review; if no second analyst is available, review it yourself the next day.
+
+## 3.9.2 Do's and Don'ts for Handling
+1. Do make sure you can identify and trace every record (by suitable ID variables) at every point so as to enable cross-checking with the original data. Don't ever drop the ID variables even if they are not specifically useful for the analytics.
+2. Don't ever lose a relevant case from a dataset; it can happen quite easily, for example, during SQL statements. In particular, cases where 'nothing happened' in one of several tables are likely to disappear during a joint manipulation.
+3. Do use meaningful units to categorize continuous variables; the units can be determined based on statistics or business rules.
+4. Do check the distributions of variables.
+5. Do use meaningful variable names or labels; it is quite handy to show the units (e.g. kg, m, day, euro) in the variable name.
+
+## 3.9.3 Do's and Don'ts for Coding/Programming
+1. Do use options to optimize your dataset (if available in the programming language).
+2. Don't forget to check the log information in great detail.
+3. Do structure your code.
+4. Do use shortcuts and/or macros for frequently use bits of code.
+5. Do document the code so that a third person will get a clear picture of what is happening.
+
+In summary, data is the main material for your analysis and decision making. Using the do's and don'ts and the aforementioned guidelines, you should end up with a clear and logical dataset with which to start. The next step is data preparation which involves manipulating the data in more detail.
